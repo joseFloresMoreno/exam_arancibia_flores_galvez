@@ -1,0 +1,60 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: docker/php/Dockerfile
+    container_name: todocamisetas_app
+    # Se uso este user para evitar problemas de permisos con los archivos montados desde el host
+    user: "1000:1000"
+    volumes:
+      - .:/var/www
+      - app_storage_views:/var/www/storage/framework/views
+      - app_storage_cache:/var/www/storage/framework/cache
+      - app_bootstrap_cache:/var/www/bootstrap/cache
+      - app_storage_logs:/var/www/storage/logs
+    networks:
+      - todocamisetas_network
+    depends_on:
+      - db
+
+  web:
+    image: nginx:1.27-alpine
+    container_name: todocamisetas_web
+    ports:
+      - "8080:80"
+    volumes:
+      - .:/var/www
+      - app_storage_views:/var/www/storage/framework/views
+      - app_storage_cache:/var/www/storage/framework/cache
+      - app_bootstrap_cache:/var/www/bootstrap/cache
+      - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf
+    networks:
+      - todocamisetas_network
+    depends_on:
+      - app
+
+  db:
+    image: mysql:8.0
+    container_name: todocamisetas_db
+    environment:
+      MYSQL_DATABASE: todocamisetas
+      MYSQL_USER: todocamisetas_user
+      MYSQL_PASSWORD: todocamisetas_pass
+      MYSQL_ROOT_PASSWORD: root_pass
+    ports:
+      - "3306:3306"
+    volumes:
+      - dbdata:/var/lib/mysql
+    networks:
+      - todocamisetas_network
+
+networks:
+  todocamisetas_network:
+    driver: bridge
+
+volumes:
+  dbdata:
+  app_storage_views:
+  app_storage_cache:
+  app_bootstrap_cache:
+  app_storage_logs:

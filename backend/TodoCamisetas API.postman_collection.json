@@ -1,0 +1,2121 @@
+{
+  "info": {
+    "_postman_id": "92b0626e-d7ec-4c25-a859-d23f7825ef2c",
+    "name": "TodoCamisetas API",
+    "description": "API REST para la gestión de camisetas deportivas, clientes B2B, tallas y ventas. Permite administrar el stock de camisetas, gestionar clientes preferenciales y regulares, calcular precios con descuentos y registrar ventas.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "9908035"
+  },
+  "item": [
+    {
+      "name": "camisetas",
+      "item": [
+        {
+          "name": "{camiseta}",
+          "item": [
+            {
+              "name": "Obtener camiseta",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/camisetas/:camiseta?cliente_id=8561",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "camisetas",
+                    ":camiseta"
+                  ],
+                  "query": [
+                    {
+                      "key": "cliente_id",
+                      "value": "8561",
+                      "description": "ID del cliente para aplicar descuento"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "key": "camiseta",
+                      "value": "8561"
+                    }
+                  ]
+                },
+                "description": "Obtiene una camiseta específica y calcula el precio final según el descuento del cliente."
+              },
+              "response": [
+                {
+                  "name": "Camiseta encontrada",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/camisetas/:camiseta?cliente_id=8561",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "camisetas",
+                        ":camiseta"
+                      ],
+                      "query": [
+                        {
+                          "description": "ID del cliente para aplicar descuento",
+                          "key": "cliente_id",
+                          "value": "8561"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "camiseta",
+                          "value": "8561"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "body": "{\n  \"success\": true,\n  \"data\": {\n    \"titulo\": \"Camiseta Local 2025 - Selección Chilena\",\n    \"club\": \"Selección Chilena\",\n    \"pais\": \"Chile\",\n    \"tipo\": \"Local\",\n    \"color\": \"Rojo\",\n    \"precio\": 45000,\n    \"stock\": 20,\n    \"codigo_producto\": \"SCL2025L\",\n    \"id\": 1,\n    \"precio_final\": 40500,\n    \"detalles\": \"Edición aniversario 2025\",\n    \"tallas\": [\n      {\n        \"nombre\": \"M\",\n        \"id\": 1,\n        \"created_at\": \"1959-03-21T09:41:09.021Z\",\n        \"updated_at\": \"2008-11-23T13:29:26.370Z\"\n      },\n      {\n        \"nombre\": \"M\",\n        \"id\": 1,\n        \"created_at\": \"1988-04-17T19:19:58.745Z\",\n        \"updated_at\": \"1997-12-17T23:04:54.810Z\"\n      }\n    ],\n    \"created_at\": \"1946-11-27T09:15:05.055Z\",\n    \"updated_at\": \"1985-11-06T20:03:53.387Z\"\n  }\n}"
+                }
+              ]
+            },
+            {
+              "name": "Actualizar camiseta",
+              "request": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"titulo\": \"Camiseta Local 2025 - Selección Chilena\",\n  \"club\": \"Selección Chilena\",\n  \"pais\": \"Chile\",\n  \"tipo\": \"Local\",\n  \"color\": \"Rojo\",\n  \"precio\": 45000,\n  \"stock\": 20,\n  \"codigo_producto\": \"SCL2025L\",\n  \"detalles\": \"Edición aniversario 2025\",\n  \"tallas\": [\n    1,\n    2,\n    3\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/camisetas/:camiseta",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "camisetas",
+                    ":camiseta"
+                  ],
+                  "variable": [
+                    {
+                      "key": "camiseta",
+                      "value": "8561"
+                    }
+                  ]
+                },
+                "description": "Actualiza los datos de una camiseta existente."
+              },
+              "response": [
+                {
+                  "name": "Camiseta actualizada correctamente",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"titulo\": \"Camiseta Local 2025 - Selección Chilena\",\n  \"club\": \"Selección Chilena\",\n  \"pais\": \"Chile\",\n  \"tipo\": \"Local\",\n  \"color\": \"Rojo\",\n  \"precio\": 45000,\n  \"stock\": 20,\n  \"codigo_producto\": \"SCL2025L\",\n  \"detalles\": \"Edición aniversario 2025\",\n  \"tallas\": [\n    1,\n    2,\n    3\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/camisetas/:camiseta",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "camisetas",
+                        ":camiseta"
+                      ],
+                      "variable": [
+                        {
+                          "key": "camiseta",
+                          "value": "8561"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "body": ""
+                },
+                {
+                  "name": "Datos inválidos",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"titulo\": \"Camiseta Local 2025 - Selección Chilena\",\n  \"club\": \"Selección Chilena\",\n  \"pais\": \"Chile\",\n  \"tipo\": \"Local\",\n  \"color\": \"Rojo\",\n  \"precio\": 45000,\n  \"stock\": 20,\n  \"codigo_producto\": \"SCL2025L\",\n  \"detalles\": \"Edición aniversario 2025\",\n  \"tallas\": [\n    1,\n    2,\n    3\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/camisetas/:camiseta",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "camisetas",
+                        ":camiseta"
+                      ],
+                      "variable": [
+                        {
+                          "key": "camiseta",
+                          "value": "8561"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                  "code": 422,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "body": ""
+                }
+              ]
+            },
+            {
+              "name": "Eliminar camiseta",
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/camisetas/:camiseta",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "camisetas",
+                    ":camiseta"
+                  ],
+                  "variable": [
+                    {
+                      "key": "camiseta",
+                      "value": "8561"
+                    }
+                  ]
+                },
+                "description": "Elimina una camiseta siempre que no esté asociada a ventas."
+              },
+              "response": [
+                {
+                  "name": "Camiseta eliminada correctamente",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/camisetas/:camiseta",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "camisetas",
+                        ":camiseta"
+                      ],
+                      "variable": [
+                        {
+                          "key": "camiseta",
+                          "value": "8561"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "body": ""
+                },
+                {
+                  "name": "La camiseta posee ventas asociadas",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/camisetas/:camiseta",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "camisetas",
+                        ":camiseta"
+                      ],
+                      "variable": [
+                        {
+                          "key": "camiseta",
+                          "value": "8561"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Conflict",
+                  "code": 409,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "body": ""
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Listar camisetas",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/camisetas",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "camisetas"
+              ]
+            },
+            "description": "Obtiene todas las camisetas registradas junto con sus tallas disponibles."
+          },
+          "response": [
+            {
+              "name": "Listado de camisetas",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/camisetas",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "camisetas"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"success\": true,\n  \"data\": [\n    {\n      \"titulo\": \"Camiseta Local 2025 - Selección Chilena\",\n      \"club\": \"Selección Chilena\",\n      \"pais\": \"Chile\",\n      \"tipo\": \"Local\",\n      \"color\": \"Rojo\",\n      \"precio\": 45000,\n      \"stock\": 20,\n      \"codigo_producto\": \"SCL2025L\",\n      \"id\": 1,\n      \"precio_final\": 40500,\n      \"detalles\": \"Edición aniversario 2025\",\n      \"tallas\": [\n        {\n          \"nombre\": \"M\",\n          \"id\": 1,\n          \"created_at\": \"1993-12-03T10:39:26.711Z\",\n          \"updated_at\": \"1979-03-24T13:08:41.266Z\"\n        },\n        {\n          \"nombre\": \"M\",\n          \"id\": 1,\n          \"created_at\": \"1984-07-26T20:53:21.541Z\",\n          \"updated_at\": \"1988-07-19T17:40:14.240Z\"\n        }\n      ],\n      \"created_at\": \"2011-02-23T04:51:09.614Z\",\n      \"updated_at\": \"2018-01-31T21:32:19.981Z\"\n    },\n    {\n      \"titulo\": \"Camiseta Local 2025 - Selección Chilena\",\n      \"club\": \"Selección Chilena\",\n      \"pais\": \"Chile\",\n      \"tipo\": \"Local\",\n      \"color\": \"Rojo\",\n      \"precio\": 45000,\n      \"stock\": 20,\n      \"codigo_producto\": \"SCL2025L\",\n      \"id\": 1,\n      \"precio_final\": 40500,\n      \"detalles\": \"Edición aniversario 2025\",\n      \"tallas\": [\n        {\n          \"nombre\": \"M\",\n          \"id\": 1,\n          \"created_at\": \"2022-07-12T21:51:03.402Z\",\n          \"updated_at\": \"1990-07-26T04:03:47.237Z\"\n        },\n        {\n          \"nombre\": \"M\",\n          \"id\": 1,\n          \"created_at\": \"1964-09-01T22:11:01.771Z\",\n          \"updated_at\": \"2005-11-10T05:12:17.056Z\"\n        }\n      ],\n      \"created_at\": \"1959-02-09T10:29:06.949Z\",\n      \"updated_at\": \"2004-07-01T18:40:30.744Z\"\n    }\n  ]\n}"
+            }
+          ]
+        },
+        {
+          "name": "Crear camiseta",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"titulo\": \"Camiseta Local 2025 - Selección Chilena\",\n  \"club\": \"Selección Chilena\",\n  \"pais\": \"Chile\",\n  \"tipo\": \"Local\",\n  \"color\": \"Rojo\",\n  \"precio\": 45000,\n  \"stock\": 20,\n  \"codigo_producto\": \"SCL2025L\",\n  \"detalles\": \"Edición aniversario 2025\",\n  \"tallas\": [\n    1,\n    2,\n    3\n  ]\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/camisetas",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "camisetas"
+              ]
+            },
+            "description": "Registra una nueva camiseta en el catálogo."
+          },
+          "response": [
+            {
+              "name": "Camiseta creada correctamente",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"titulo\": \"Camiseta Local 2025 - Selección Chilena\",\n  \"club\": \"Selección Chilena\",\n  \"pais\": \"Chile\",\n  \"tipo\": \"Local\",\n  \"color\": \"Rojo\",\n  \"precio\": 45000,\n  \"stock\": 20,\n  \"codigo_producto\": \"SCL2025L\",\n  \"detalles\": \"Edición aniversario 2025\",\n  \"tallas\": [\n    1,\n    2,\n    3\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/camisetas",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "camisetas"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"success\": true,\n  \"data\": {\n    \"titulo\": \"Camiseta Local 2025 - Selección Chilena\",\n    \"club\": \"Selección Chilena\",\n    \"pais\": \"Chile\",\n    \"tipo\": \"Local\",\n    \"color\": \"Rojo\",\n    \"precio\": 45000,\n    \"stock\": 20,\n    \"codigo_producto\": \"SCL2025L\",\n    \"id\": 1,\n    \"precio_final\": 40500,\n    \"detalles\": \"Edición aniversario 2025\",\n    \"tallas\": [\n      {\n        \"nombre\": \"M\",\n        \"id\": 1,\n        \"created_at\": \"1959-03-21T09:41:09.021Z\",\n        \"updated_at\": \"2008-11-23T13:29:26.370Z\"\n      },\n      {\n        \"nombre\": \"M\",\n        \"id\": 1,\n        \"created_at\": \"1988-04-17T19:19:58.745Z\",\n        \"updated_at\": \"1997-12-17T23:04:54.810Z\"\n      }\n    ],\n    \"created_at\": \"1946-11-27T09:15:05.055Z\",\n    \"updated_at\": \"1985-11-06T20:03:53.387Z\"\n  }\n}"
+            },
+            {
+              "name": "Datos inválidos",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"titulo\": \"Camiseta Local 2025 - Selección Chilena\",\n  \"club\": \"Selección Chilena\",\n  \"pais\": \"Chile\",\n  \"tipo\": \"Local\",\n  \"color\": \"Rojo\",\n  \"precio\": 45000,\n  \"stock\": 20,\n  \"codigo_producto\": \"SCL2025L\",\n  \"detalles\": \"Edición aniversario 2025\",\n  \"tallas\": [\n    1,\n    2,\n    3\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/camisetas",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "camisetas"
+                  ]
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "body": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "clientes",
+      "item": [
+        {
+          "name": "{cliente}",
+          "item": [
+            {
+              "name": "camisetas",
+              "item": [
+                {
+                  "name": "Listar camisetas compradas por un cliente",
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/clientes/:cliente/camisetas",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "clientes",
+                        ":cliente",
+                        "camisetas"
+                      ],
+                      "variable": [
+                        {
+                          "key": "cliente",
+                          "value": "8561",
+                          "description": "ID del cliente"
+                        }
+                      ]
+                    },
+                    "description": "Obtiene todas las camisetas adquiridas por un cliente."
+                  },
+                  "response": [
+                    {
+                      "name": "Listado de camisetas compradas",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/clientes/:cliente/camisetas",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "clientes",
+                            ":cliente",
+                            "camisetas"
+                          ],
+                          "variable": [
+                            {
+                              "key": "cliente",
+                              "value": "8561",
+                              "description": "ID del cliente"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "body": "{\n  \"success\": true,\n  \"data\": [\n    {\n      \"titulo\": \"Camiseta Local 2025 - Selección Chilena\",\n      \"club\": \"Selección Chilena\",\n      \"pais\": \"Chile\",\n      \"tipo\": \"Local\",\n      \"color\": \"Rojo\",\n      \"precio\": 45000,\n      \"stock\": 20,\n      \"codigo_producto\": \"SCL2025L\",\n      \"id\": 1,\n      \"precio_final\": 40500,\n      \"detalles\": \"Edición aniversario 2025\",\n      \"tallas\": [\n        {\n          \"nombre\": \"M\",\n          \"id\": 1,\n          \"created_at\": \"1993-12-03T10:39:26.711Z\",\n          \"updated_at\": \"1979-03-24T13:08:41.266Z\"\n        },\n        {\n          \"nombre\": \"M\",\n          \"id\": 1,\n          \"created_at\": \"1984-07-26T20:53:21.541Z\",\n          \"updated_at\": \"1988-07-19T17:40:14.240Z\"\n        }\n      ],\n      \"created_at\": \"2011-02-23T04:51:09.614Z\",\n      \"updated_at\": \"2018-01-31T21:32:19.981Z\"\n    },\n    {\n      \"titulo\": \"Camiseta Local 2025 - Selección Chilena\",\n      \"club\": \"Selección Chilena\",\n      \"pais\": \"Chile\",\n      \"tipo\": \"Local\",\n      \"color\": \"Rojo\",\n      \"precio\": 45000,\n      \"stock\": 20,\n      \"codigo_producto\": \"SCL2025L\",\n      \"id\": 1,\n      \"precio_final\": 40500,\n      \"detalles\": \"Edición aniversario 2025\",\n      \"tallas\": [\n        {\n          \"nombre\": \"M\",\n          \"id\": 1,\n          \"created_at\": \"2022-07-12T21:51:03.402Z\",\n          \"updated_at\": \"1990-07-26T04:03:47.237Z\"\n        },\n        {\n          \"nombre\": \"M\",\n          \"id\": 1,\n          \"created_at\": \"1964-09-01T22:11:01.771Z\",\n          \"updated_at\": \"2005-11-10T05:12:17.056Z\"\n        }\n      ],\n      \"created_at\": \"1959-02-09T10:29:06.949Z\",\n      \"updated_at\": \"2004-07-01T18:40:30.744Z\"\n    }\n  ]\n}"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Obtener cliente",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/clientes/:cliente",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "clientes",
+                    ":cliente"
+                  ],
+                  "variable": [
+                    {
+                      "key": "cliente",
+                      "value": "8561",
+                      "description": "ID del cliente"
+                    }
+                  ]
+                },
+                "description": "Obtiene la información de un cliente específico."
+              },
+              "response": [
+                {
+                  "name": "Cliente encontrado",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/clientes/:cliente",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "clientes",
+                        ":cliente"
+                      ],
+                      "variable": [
+                        {
+                          "key": "cliente",
+                          "value": "8561",
+                          "description": "ID del cliente"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "body": "{\n  \"success\": true,\n  \"data\": {\n    \"nombre_comercial\": \"90minutos\",\n    \"rut_comercial\": \"76123456-7\",\n    \"direccion\": \"Providencia, Santiago\",\n    \"categoria\": \"Preferencial\",\n    \"contacto_nombre\": \"Juan Pérez\",\n    \"contacto_email\": \"juan@90minutos.cl\",\n    \"porcentaje_oferta\": 10,\n    \"id\": 1,\n    \"created_at\": \"2022-06-12T08:01:17.651Z\",\n    \"updated_at\": \"1954-03-12T02:35:28.082Z\"\n  }\n}"
+                }
+              ]
+            },
+            {
+              "name": "Actualizar cliente",
+              "request": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"nombre_comercial\": \"90minutos\",\n  \"rut_comercial\": \"76123456-7\",\n  \"direccion\": \"Providencia, Santiago\",\n  \"categoria\": \"Preferencial\",\n  \"contacto_nombre\": \"Juan Pérez\",\n  \"contacto_email\": \"juan@90minutos.cl\",\n  \"porcentaje_oferta\": 10\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/clientes/:cliente",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "clientes",
+                    ":cliente"
+                  ],
+                  "variable": [
+                    {
+                      "key": "cliente",
+                      "value": "8561",
+                      "description": "ID del cliente"
+                    }
+                  ]
+                },
+                "description": "Actualiza los datos de un cliente existente."
+              },
+              "response": [
+                {
+                  "name": "Cliente actualizado correctamente",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"nombre_comercial\": \"90minutos\",\n  \"rut_comercial\": \"76123456-7\",\n  \"direccion\": \"Providencia, Santiago\",\n  \"categoria\": \"Preferencial\",\n  \"contacto_nombre\": \"Juan Pérez\",\n  \"contacto_email\": \"juan@90minutos.cl\",\n  \"porcentaje_oferta\": 10\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/clientes/:cliente",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "clientes",
+                        ":cliente"
+                      ],
+                      "variable": [
+                        {
+                          "key": "cliente",
+                          "value": "8561",
+                          "description": "ID del cliente"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "body": "{\n  \"success\": true,\n  \"data\": {\n    \"nombre_comercial\": \"90minutos\",\n    \"rut_comercial\": \"76123456-7\",\n    \"direccion\": \"Providencia, Santiago\",\n    \"categoria\": \"Preferencial\",\n    \"contacto_nombre\": \"Juan Pérez\",\n    \"contacto_email\": \"juan@90minutos.cl\",\n    \"porcentaje_oferta\": 10,\n    \"id\": 1,\n    \"created_at\": \"2022-06-12T08:01:17.651Z\",\n    \"updated_at\": \"1954-03-12T02:35:28.082Z\"\n  }\n}"
+                },
+                {
+                  "name": "Datos inválidos o RUT inválido",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"nombre_comercial\": \"90minutos\",\n  \"rut_comercial\": \"76123456-7\",\n  \"direccion\": \"Providencia, Santiago\",\n  \"categoria\": \"Preferencial\",\n  \"contacto_nombre\": \"Juan Pérez\",\n  \"contacto_email\": \"juan@90minutos.cl\",\n  \"porcentaje_oferta\": 10\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/clientes/:cliente",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "clientes",
+                        ":cliente"
+                      ],
+                      "variable": [
+                        {
+                          "key": "cliente",
+                          "value": "8561",
+                          "description": "ID del cliente"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                  "code": 422,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "body": ""
+                }
+              ]
+            },
+            {
+              "name": "Eliminar cliente",
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/clientes/:cliente",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "clientes",
+                    ":cliente"
+                  ],
+                  "variable": [
+                    {
+                      "key": "cliente",
+                      "value": "8561",
+                      "description": "ID del cliente"
+                    }
+                  ]
+                },
+                "description": "Elimina un cliente siempre que no posea ventas asociadas."
+              },
+              "response": [
+                {
+                  "name": "Cliente eliminado correctamente",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/clientes/:cliente",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "clientes",
+                        ":cliente"
+                      ],
+                      "variable": [
+                        {
+                          "key": "cliente",
+                          "value": "8561",
+                          "description": "ID del cliente"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "body": ""
+                },
+                {
+                  "name": "El cliente posee ventas asociadas",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/clientes/:cliente",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "clientes",
+                        ":cliente"
+                      ],
+                      "variable": [
+                        {
+                          "key": "cliente",
+                          "value": "8561",
+                          "description": "ID del cliente"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Conflict",
+                  "code": 409,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "body": ""
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Listar clientes",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/clientes",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "clientes"
+              ]
+            },
+            "description": "Obtiene todos los clientes registrados."
+          },
+          "response": [
+            {
+              "name": "Listado de clientes",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/clientes",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "clientes"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"success\": true,\n  \"data\": [\n    {\n      \"nombre_comercial\": \"90minutos\",\n      \"rut_comercial\": \"76123456-7\",\n      \"direccion\": \"Providencia, Santiago\",\n      \"categoria\": \"Preferencial\",\n      \"contacto_nombre\": \"Juan Pérez\",\n      \"contacto_email\": \"juan@90minutos.cl\",\n      \"porcentaje_oferta\": 10,\n      \"id\": 1,\n      \"created_at\": \"1970-06-02T22:02:33.675Z\",\n      \"updated_at\": \"2016-05-03T11:41:35.016Z\"\n    },\n    {\n      \"nombre_comercial\": \"90minutos\",\n      \"rut_comercial\": \"76123456-7\",\n      \"direccion\": \"Providencia, Santiago\",\n      \"categoria\": \"Preferencial\",\n      \"contacto_nombre\": \"Juan Pérez\",\n      \"contacto_email\": \"juan@90minutos.cl\",\n      \"porcentaje_oferta\": 10,\n      \"id\": 1,\n      \"created_at\": \"1961-01-25T22:59:07.374Z\",\n      \"updated_at\": \"2008-01-15T23:23:25.310Z\"\n    }\n  ]\n}"
+            }
+          ]
+        },
+        {
+          "name": "Crear cliente",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre_comercial\": \"90minutos\",\n  \"rut_comercial\": \"76123456-7\",\n  \"direccion\": \"Providencia, Santiago\",\n  \"categoria\": \"Preferencial\",\n  \"contacto_nombre\": \"Juan Pérez\",\n  \"contacto_email\": \"juan@90minutos.cl\",\n  \"porcentaje_oferta\": 10\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/clientes",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "clientes"
+              ]
+            },
+            "description": "Registra un nuevo cliente validando el RUT chileno."
+          },
+          "response": [
+            {
+              "name": "Cliente creado correctamente",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"nombre_comercial\": \"90minutos\",\n  \"rut_comercial\": \"76123456-7\",\n  \"direccion\": \"Providencia, Santiago\",\n  \"categoria\": \"Preferencial\",\n  \"contacto_nombre\": \"Juan Pérez\",\n  \"contacto_email\": \"juan@90minutos.cl\",\n  \"porcentaje_oferta\": 10\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/clientes",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "clientes"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"success\": true,\n  \"data\": {\n    \"nombre_comercial\": \"90minutos\",\n    \"rut_comercial\": \"76123456-7\",\n    \"direccion\": \"Providencia, Santiago\",\n    \"categoria\": \"Preferencial\",\n    \"contacto_nombre\": \"Juan Pérez\",\n    \"contacto_email\": \"juan@90minutos.cl\",\n    \"porcentaje_oferta\": 10,\n    \"id\": 1,\n    \"created_at\": \"2022-06-12T08:01:17.651Z\",\n    \"updated_at\": \"1954-03-12T02:35:28.082Z\"\n  }\n}"
+            },
+            {
+              "name": "Datos inválidos o RUT inválido",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"nombre_comercial\": \"90minutos\",\n  \"rut_comercial\": \"76123456-7\",\n  \"direccion\": \"Providencia, Santiago\",\n  \"categoria\": \"Preferencial\",\n  \"contacto_nombre\": \"Juan Pérez\",\n  \"contacto_email\": \"juan@90minutos.cl\",\n  \"porcentaje_oferta\": 10\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/clientes",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "clientes"
+                  ]
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "body": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "health",
+      "item": [
+        {
+          "name": "Verificar estado del servicio",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/health",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "health"
+              ]
+            },
+            "description": "Endpoint de observabilidad. Verifica que la API está disponible."
+          },
+          "response": [
+            {
+              "name": "Servicio operativo",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/health",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "health"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"status\": \"online\",\n  \"service\": \"TodoCamisetas API\",\n  \"version\": \"1.0.0\",\n  \"timestamp\": \"2026-06-09T12:00:00+00:00\"\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "tallas",
+      "item": [
+        {
+          "name": "{talla}",
+          "item": [
+            {
+              "name": "Obtener talla",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/tallas/:talla",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "tallas",
+                    ":talla"
+                  ],
+                  "variable": [
+                    {
+                      "key": "talla",
+                      "value": "8561",
+                      "description": "ID de la talla"
+                    }
+                  ]
+                },
+                "description": "Obtiene una talla específica."
+              },
+              "response": [
+                {
+                  "name": "Talla encontrada",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/tallas/:talla",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "tallas",
+                        ":talla"
+                      ],
+                      "variable": [
+                        {
+                          "key": "talla",
+                          "value": "8561",
+                          "description": "ID de la talla"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "body": "{\n  \"success\": true,\n  \"data\": {\n    \"nombre\": \"M\",\n    \"id\": 1,\n    \"created_at\": \"2020-05-30T20:41:37.311Z\",\n    \"updated_at\": \"1965-08-14T12:33:36.785Z\"\n  }\n}"
+                }
+              ]
+            },
+            {
+              "name": "Actualizar talla",
+              "request": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"nombre\": \"M\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/tallas/:talla",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "tallas",
+                    ":talla"
+                  ],
+                  "variable": [
+                    {
+                      "key": "talla",
+                      "value": "8561",
+                      "description": "ID de la talla"
+                    }
+                  ]
+                },
+                "description": "Actualiza los datos de una talla existente."
+              },
+              "response": [
+                {
+                  "name": "Talla actualizada correctamente",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"nombre\": \"M\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/tallas/:talla",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "tallas",
+                        ":talla"
+                      ],
+                      "variable": [
+                        {
+                          "key": "talla",
+                          "value": "8561",
+                          "description": "ID de la talla"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "body": "{\n  \"success\": true,\n  \"data\": {\n    \"nombre\": \"M\",\n    \"id\": 1,\n    \"created_at\": \"2020-05-30T20:41:37.311Z\",\n    \"updated_at\": \"1965-08-14T12:33:36.785Z\"\n  }\n}"
+                },
+                {
+                  "name": "Datos inválidos",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"nombre\": \"M\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/tallas/:talla",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "tallas",
+                        ":talla"
+                      ],
+                      "variable": [
+                        {
+                          "key": "talla",
+                          "value": "8561",
+                          "description": "ID de la talla"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                  "code": 422,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "body": ""
+                }
+              ]
+            },
+            {
+              "name": "Eliminar talla",
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/tallas/:talla",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "tallas",
+                    ":talla"
+                  ],
+                  "variable": [
+                    {
+                      "key": "talla",
+                      "value": "8561",
+                      "description": "ID de la talla"
+                    }
+                  ]
+                },
+                "description": "Elimina una talla siempre que no esté asociada a camisetas."
+              },
+              "response": [
+                {
+                  "name": "Talla eliminada correctamente",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/tallas/:talla",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "tallas",
+                        ":talla"
+                      ],
+                      "variable": [
+                        {
+                          "key": "talla",
+                          "value": "8561",
+                          "description": "ID de la talla"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "body": ""
+                },
+                {
+                  "name": "La talla está asociada a una o más camisetas",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/tallas/:talla",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "tallas",
+                        ":talla"
+                      ],
+                      "variable": [
+                        {
+                          "key": "talla",
+                          "value": "8561",
+                          "description": "ID de la talla"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Conflict",
+                  "code": 409,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "body": ""
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Listar tallas",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/tallas",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "tallas"
+              ]
+            },
+            "description": "Obtiene todas las tallas registradas."
+          },
+          "response": [
+            {
+              "name": "Listado de tallas",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/tallas",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "tallas"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"success\": true,\n  \"data\": [\n    {\n      \"nombre\": \"M\",\n      \"id\": 1,\n      \"created_at\": \"1971-06-03T19:16:44.498Z\",\n      \"updated_at\": \"1991-06-28T03:18:52.021Z\"\n    },\n    {\n      \"nombre\": \"M\",\n      \"id\": 1,\n      \"created_at\": \"2015-09-01T23:08:18.802Z\",\n      \"updated_at\": \"1961-01-13T21:55:32.721Z\"\n    }\n  ]\n}"
+            }
+          ]
+        },
+        {
+          "name": "Crear talla",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"M\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/tallas",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "tallas"
+              ]
+            },
+            "description": "Registra una nueva talla para camisetas."
+          },
+          "response": [
+            {
+              "name": "Talla creada correctamente",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"nombre\": \"M\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/tallas",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "tallas"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"success\": true,\n  \"data\": {\n    \"nombre\": \"M\",\n    \"id\": 1,\n    \"created_at\": \"2020-05-30T20:41:37.311Z\",\n    \"updated_at\": \"1965-08-14T12:33:36.785Z\"\n  }\n}"
+            },
+            {
+              "name": "Datos inválidos",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"nombre\": \"M\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/tallas",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "tallas"
+                  ]
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "body": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "ventas",
+      "item": [
+        {
+          "name": "{venta}",
+          "item": [
+            {
+              "name": "Obtener venta",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/ventas/:venta",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "ventas",
+                    ":venta"
+                  ],
+                  "variable": [
+                    {
+                      "key": "venta",
+                      "value": "8561",
+                      "description": "ID de la venta"
+                    }
+                  ]
+                },
+                "description": "Obtiene una venta específica junto con su cliente y detalle de productos."
+              },
+              "response": [
+                {
+                  "name": "Venta encontrada",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/ventas/:venta",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "ventas",
+                        ":venta"
+                      ],
+                      "variable": [
+                        {
+                          "key": "venta",
+                          "value": "8561",
+                          "description": "ID de la venta"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "body": "{\n  \"success\": true,\n  \"data\": {\n    \"cliente_id\": 1,\n    \"fecha_venta\": \"2026-06-10\",\n    \"id\": 1,\n    \"cliente\": {\n      \"nombre_comercial\": \"90minutos\",\n      \"rut_comercial\": \"76123456-7\",\n      \"direccion\": \"Providencia, Santiago\",\n      \"categoria\": \"Preferencial\",\n      \"contacto_nombre\": \"Juan Pérez\",\n      \"contacto_email\": \"juan@90minutos.cl\",\n      \"porcentaje_oferta\": 10,\n      \"id\": 1,\n      \"created_at\": \"2012-01-23T14:47:13.391Z\",\n      \"updated_at\": \"1974-03-04T22:19:43.422Z\"\n    },\n    \"detalles\": [\n      {\n        \"venta_id\": 1,\n        \"camiseta_id\": 1,\n        \"cantidad\": 2,\n        \"precio_unitario\": 40500,\n        \"subtotal\": 81000,\n        \"id\": 1,\n        \"camiseta\": {\n          \"titulo\": \"Camiseta Local 2025 - Selección Chilena\",\n          \"club\": \"Selección Chilena\",\n          \"pais\": \"Chile\",\n          \"tipo\": \"Local\",\n          \"color\": \"Rojo\",\n          \"precio\": 45000,\n          \"stock\": 20,\n          \"codigo_producto\": \"SCL2025L\",\n          \"id\": 1,\n          \"precio_final\": 40500,\n          \"detalles\": \"Edición aniversario 2025\",\n          \"tallas\": [\n            {\n              \"nombre\": \"M\",\n              \"id\": 1,\n              \"created_at\": \"1968-07-26T13:47:39.527Z\",\n              \"updated_at\": \"1972-02-14T14:10:04.230Z\"\n            },\n            {\n              \"nombre\": \"M\",\n              \"id\": 1,\n              \"created_at\": \"2007-11-13T15:10:01.079Z\",\n              \"updated_at\": \"1955-07-05T02:44:44.693Z\"\n            }\n          ],\n          \"created_at\": \"2024-08-06T18:49:57.324Z\",\n          \"updated_at\": \"1978-08-22T19:45:05.778Z\"\n        },\n        \"created_at\": \"1963-09-30T11:27:00.951Z\",\n        \"updated_at\": \"1958-12-31T04:54:48.015Z\"\n      },\n      {\n        \"venta_id\": 1,\n        \"camiseta_id\": 1,\n        \"cantidad\": 2,\n        \"precio_unitario\": 40500,\n        \"subtotal\": 81000,\n        \"id\": 1,\n        \"camiseta\": {\n          \"titulo\": \"Camiseta Local 2025 - Selección Chilena\",\n          \"club\": \"Selección Chilena\",\n          \"pais\": \"Chile\",\n          \"tipo\": \"Local\",\n          \"color\": \"Rojo\",\n          \"precio\": 45000,\n          \"stock\": 20,\n          \"codigo_producto\": \"SCL2025L\",\n          \"id\": 1,\n          \"precio_final\": 40500,\n          \"detalles\": \"Edición aniversario 2025\",\n          \"tallas\": [\n            {\n              \"nombre\": \"M\",\n              \"id\": 1,\n              \"created_at\": \"1964-10-19T12:03:29.088Z\",\n              \"updated_at\": \"1985-11-11T12:21:48.447Z\"\n            },\n            {\n              \"nombre\": \"M\",\n              \"id\": 1,\n              \"created_at\": \"1992-09-04T22:53:57.050Z\",\n              \"updated_at\": \"2023-06-21T11:50:29.677Z\"\n            }\n          ],\n          \"created_at\": \"1991-11-09T01:21:06.141Z\",\n          \"updated_at\": \"2009-02-18T10:28:32.674Z\"\n        },\n        \"created_at\": \"2007-07-15T11:48:11.667Z\",\n        \"updated_at\": \"2002-03-25T21:58:41.510Z\"\n      }\n    ],\n    \"created_at\": \"2009-05-13T14:52:10.429Z\",\n    \"updated_at\": \"1999-07-20T23:26:52.868Z\"\n  }\n}"
+                }
+              ]
+            },
+            {
+              "name": "Actualizar venta",
+              "request": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"cliente_id\": 1,\n  \"fecha_venta\": \"2026-06-10\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/ventas/:venta",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "ventas",
+                    ":venta"
+                  ],
+                  "variable": [
+                    {
+                      "key": "venta",
+                      "value": "8561",
+                      "description": "ID de la venta"
+                    }
+                  ]
+                },
+                "description": "Actualiza los datos generales de una venta."
+              },
+              "response": [
+                {
+                  "name": "Venta actualizada correctamente",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"cliente_id\": 1,\n  \"fecha_venta\": \"2026-06-10\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/ventas/:venta",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "ventas",
+                        ":venta"
+                      ],
+                      "variable": [
+                        {
+                          "key": "venta",
+                          "value": "8561",
+                          "description": "ID de la venta"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "body": "{\n  \"success\": true,\n  \"data\": {\n    \"cliente_id\": 1,\n    \"fecha_venta\": \"2026-06-10\",\n    \"id\": 1,\n    \"cliente\": {\n      \"nombre_comercial\": \"90minutos\",\n      \"rut_comercial\": \"76123456-7\",\n      \"direccion\": \"Providencia, Santiago\",\n      \"categoria\": \"Preferencial\",\n      \"contacto_nombre\": \"Juan Pérez\",\n      \"contacto_email\": \"juan@90minutos.cl\",\n      \"porcentaje_oferta\": 10,\n      \"id\": 1,\n      \"created_at\": \"2012-01-23T14:47:13.391Z\",\n      \"updated_at\": \"1974-03-04T22:19:43.422Z\"\n    },\n    \"detalles\": [\n      {\n        \"venta_id\": 1,\n        \"camiseta_id\": 1,\n        \"cantidad\": 2,\n        \"precio_unitario\": 40500,\n        \"subtotal\": 81000,\n        \"id\": 1,\n        \"camiseta\": {\n          \"titulo\": \"Camiseta Local 2025 - Selección Chilena\",\n          \"club\": \"Selección Chilena\",\n          \"pais\": \"Chile\",\n          \"tipo\": \"Local\",\n          \"color\": \"Rojo\",\n          \"precio\": 45000,\n          \"stock\": 20,\n          \"codigo_producto\": \"SCL2025L\",\n          \"id\": 1,\n          \"precio_final\": 40500,\n          \"detalles\": \"Edición aniversario 2025\",\n          \"tallas\": [\n            {\n              \"nombre\": \"M\",\n              \"id\": 1,\n              \"created_at\": \"1968-07-26T13:47:39.527Z\",\n              \"updated_at\": \"1972-02-14T14:10:04.230Z\"\n            },\n            {\n              \"nombre\": \"M\",\n              \"id\": 1,\n              \"created_at\": \"2007-11-13T15:10:01.079Z\",\n              \"updated_at\": \"1955-07-05T02:44:44.693Z\"\n            }\n          ],\n          \"created_at\": \"2024-08-06T18:49:57.324Z\",\n          \"updated_at\": \"1978-08-22T19:45:05.778Z\"\n        },\n        \"created_at\": \"1963-09-30T11:27:00.951Z\",\n        \"updated_at\": \"1958-12-31T04:54:48.015Z\"\n      },\n      {\n        \"venta_id\": 1,\n        \"camiseta_id\": 1,\n        \"cantidad\": 2,\n        \"precio_unitario\": 40500,\n        \"subtotal\": 81000,\n        \"id\": 1,\n        \"camiseta\": {\n          \"titulo\": \"Camiseta Local 2025 - Selección Chilena\",\n          \"club\": \"Selección Chilena\",\n          \"pais\": \"Chile\",\n          \"tipo\": \"Local\",\n          \"color\": \"Rojo\",\n          \"precio\": 45000,\n          \"stock\": 20,\n          \"codigo_producto\": \"SCL2025L\",\n          \"id\": 1,\n          \"precio_final\": 40500,\n          \"detalles\": \"Edición aniversario 2025\",\n          \"tallas\": [\n            {\n              \"nombre\": \"M\",\n              \"id\": 1,\n              \"created_at\": \"1964-10-19T12:03:29.088Z\",\n              \"updated_at\": \"1985-11-11T12:21:48.447Z\"\n            },\n            {\n              \"nombre\": \"M\",\n              \"id\": 1,\n              \"created_at\": \"1992-09-04T22:53:57.050Z\",\n              \"updated_at\": \"2023-06-21T11:50:29.677Z\"\n            }\n          ],\n          \"created_at\": \"1991-11-09T01:21:06.141Z\",\n          \"updated_at\": \"2009-02-18T10:28:32.674Z\"\n        },\n        \"created_at\": \"2007-07-15T11:48:11.667Z\",\n        \"updated_at\": \"2002-03-25T21:58:41.510Z\"\n      }\n    ],\n    \"created_at\": \"2009-05-13T14:52:10.429Z\",\n    \"updated_at\": \"1999-07-20T23:26:52.868Z\"\n  }\n}"
+                },
+                {
+                  "name": "Datos inválidos",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"cliente_id\": 1,\n  \"fecha_venta\": \"2026-06-10\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/ventas/:venta",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "ventas",
+                        ":venta"
+                      ],
+                      "variable": [
+                        {
+                          "key": "venta",
+                          "value": "8561",
+                          "description": "ID de la venta"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                  "code": 422,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "body": ""
+                }
+              ]
+            },
+            {
+              "name": "Eliminar venta",
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/ventas/:venta",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "ventas",
+                    ":venta"
+                  ],
+                  "variable": [
+                    {
+                      "key": "venta",
+                      "value": "8561",
+                      "description": "ID de la venta"
+                    }
+                  ]
+                },
+                "description": "Elimina una venta siempre que no posea detalles asociados."
+              },
+              "response": [
+                {
+                  "name": "Venta eliminada correctamente",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/ventas/:venta",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "ventas",
+                        ":venta"
+                      ],
+                      "variable": [
+                        {
+                          "key": "venta",
+                          "value": "8561",
+                          "description": "ID de la venta"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "body": ""
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Listar ventas",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/ventas",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "ventas"
+              ]
+            },
+            "description": "Obtiene todas las ventas registradas junto con sus clientes y detalles."
+          },
+          "response": [
+            {
+              "name": "Listado de ventas",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/ventas",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "ventas"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"success\": true,\n  \"data\": [\n    {\n      \"cliente_id\": 1,\n      \"fecha_venta\": \"2026-06-10\",\n      \"id\": 1,\n      \"cliente\": {\n        \"nombre_comercial\": \"90minutos\",\n        \"rut_comercial\": \"76123456-7\",\n        \"direccion\": \"Providencia, Santiago\",\n        \"categoria\": \"Preferencial\",\n        \"contacto_nombre\": \"Juan Pérez\",\n        \"contacto_email\": \"juan@90minutos.cl\",\n        \"porcentaje_oferta\": 10,\n        \"id\": 1,\n        \"created_at\": \"1989-12-27T21:01:47.994Z\",\n        \"updated_at\": \"1967-01-14T20:29:59.189Z\"\n      },\n      \"detalles\": [\n        {\n          \"venta_id\": 1,\n          \"camiseta_id\": 1,\n          \"cantidad\": 2,\n          \"precio_unitario\": 40500,\n          \"subtotal\": 81000,\n          \"id\": 1,\n          \"camiseta\": {\n            \"titulo\": \"Camiseta Local 2025 - Selección Chilena\",\n            \"club\": \"Selección Chilena\",\n            \"pais\": \"Chile\",\n            \"tipo\": \"Local\",\n            \"color\": \"Rojo\",\n            \"precio\": 45000,\n            \"stock\": 20,\n            \"codigo_producto\": \"SCL2025L\",\n            \"id\": 1,\n            \"precio_final\": 40500,\n            \"detalles\": \"Edición aniversario 2025\",\n            \"tallas\": [\n              {\n                \"nombre\": \"M\",\n                \"id\": 1,\n                \"created_at\": \"1973-10-17T18:25:19.865Z\",\n                \"updated_at\": \"1959-03-07T19:18:03.440Z\"\n              },\n              {\n                \"nombre\": \"M\",\n                \"id\": 1,\n                \"created_at\": \"2026-03-12T10:03:13.234Z\",\n                \"updated_at\": \"2002-03-04T09:57:55.029Z\"\n              }\n            ],\n            \"created_at\": \"1948-03-29T09:20:58.243Z\",\n            \"updated_at\": \"1983-06-21T17:55:55.128Z\"\n          },\n          \"created_at\": \"1979-03-07T19:55:27.972Z\",\n          \"updated_at\": \"2000-01-06T13:29:38.901Z\"\n        },\n        {\n          \"venta_id\": 1,\n          \"camiseta_id\": 1,\n          \"cantidad\": 2,\n          \"precio_unitario\": 40500,\n          \"subtotal\": 81000,\n          \"id\": 1,\n          \"camiseta\": {\n            \"titulo\": \"Camiseta Local 2025 - Selección Chilena\",\n            \"club\": \"Selección Chilena\",\n            \"pais\": \"Chile\",\n            \"tipo\": \"Local\",\n            \"color\": \"Rojo\",\n            \"precio\": 45000,\n            \"stock\": 20,\n            \"codigo_producto\": \"SCL2025L\",\n            \"id\": 1,\n            \"precio_final\": 40500,\n            \"detalles\": \"Edición aniversario 2025\",\n            \"tallas\": [\n              {\n                \"nombre\": \"M\",\n                \"id\": 1,\n                \"created_at\": \"1982-10-19T04:02:59.119Z\",\n                \"updated_at\": \"1955-12-10T16:07:23.528Z\"\n              },\n              {\n                \"nombre\": \"M\",\n                \"id\": 1,\n                \"created_at\": \"2017-10-30T08:46:29.881Z\",\n                \"updated_at\": \"2017-12-09T18:16:22.248Z\"\n              }\n            ],\n            \"created_at\": \"1992-11-14T17:30:01.214Z\",\n            \"updated_at\": \"1972-01-09T11:58:12.083Z\"\n          },\n          \"created_at\": \"1957-10-30T07:09:51.354Z\",\n          \"updated_at\": \"1964-05-17T19:59:03.621Z\"\n        }\n      ],\n      \"created_at\": \"2008-02-18T09:25:02.338Z\",\n      \"updated_at\": \"1998-08-19T06:30:09.437Z\"\n    },\n    {\n      \"cliente_id\": 1,\n      \"fecha_venta\": \"2026-06-10\",\n      \"id\": 1,\n      \"cliente\": {\n        \"nombre_comercial\": \"90minutos\",\n        \"rut_comercial\": \"76123456-7\",\n        \"direccion\": \"Providencia, Santiago\",\n        \"categoria\": \"Preferencial\",\n        \"contacto_nombre\": \"Juan Pérez\",\n        \"contacto_email\": \"juan@90minutos.cl\",\n        \"porcentaje_oferta\": 10,\n        \"id\": 1,\n        \"created_at\": \"2008-03-09T05:28:12.471Z\",\n        \"updated_at\": \"1997-06-29T05:19:37.361Z\"\n      },\n      \"detalles\": [\n        {\n          \"venta_id\": 1,\n          \"camiseta_id\": 1,\n          \"cantidad\": 2,\n          \"precio_unitario\": 40500,\n          \"subtotal\": 81000,\n          \"id\": 1,\n          \"camiseta\": {\n            \"titulo\": \"Camiseta Local 2025 - Selección Chilena\",\n            \"club\": \"Selección Chilena\",\n            \"pais\": \"Chile\",\n            \"tipo\": \"Local\",\n            \"color\": \"Rojo\",\n            \"precio\": 45000,\n            \"stock\": 20,\n            \"codigo_producto\": \"SCL2025L\",\n            \"id\": 1,\n            \"precio_final\": 40500,\n            \"detalles\": \"Edición aniversario 2025\",\n            \"tallas\": [\n              {\n                \"nombre\": \"M\",\n                \"id\": 1,\n                \"created_at\": \"2019-06-21T02:40:27.706Z\",\n                \"updated_at\": \"1971-02-27T06:05:18.557Z\"\n              },\n              {\n                \"nombre\": \"M\",\n                \"id\": 1,\n                \"created_at\": \"1951-12-29T07:48:12.492Z\",\n                \"updated_at\": \"2003-02-17T04:49:47.720Z\"\n              }\n            ],\n            \"created_at\": \"2005-09-10T17:03:23.139Z\",\n            \"updated_at\": \"1979-05-27T01:53:02.125Z\"\n          },\n          \"created_at\": \"2005-04-22T03:36:08.100Z\",\n          \"updated_at\": \"1957-12-28T05:12:08.796Z\"\n        },\n        {\n          \"venta_id\": 1,\n          \"camiseta_id\": 1,\n          \"cantidad\": 2,\n          \"precio_unitario\": 40500,\n          \"subtotal\": 81000,\n          \"id\": 1,\n          \"camiseta\": {\n            \"titulo\": \"Camiseta Local 2025 - Selección Chilena\",\n            \"club\": \"Selección Chilena\",\n            \"pais\": \"Chile\",\n            \"tipo\": \"Local\",\n            \"color\": \"Rojo\",\n            \"precio\": 45000,\n            \"stock\": 20,\n            \"codigo_producto\": \"SCL2025L\",\n            \"id\": 1,\n            \"precio_final\": 40500,\n            \"detalles\": \"Edición aniversario 2025\",\n            \"tallas\": [\n              {\n                \"nombre\": \"M\",\n                \"id\": 1,\n                \"created_at\": \"2010-04-26T05:56:44.438Z\",\n                \"updated_at\": \"1956-10-31T05:51:01.292Z\"\n              },\n              {\n                \"nombre\": \"M\",\n                \"id\": 1,\n                \"created_at\": \"2007-04-07T04:29:47.542Z\",\n                \"updated_at\": \"2001-02-28T08:02:08.549Z\"\n              }\n            ],\n            \"created_at\": \"1961-02-12T20:13:39.470Z\",\n            \"updated_at\": \"2011-06-21T23:39:24.018Z\"\n          },\n          \"created_at\": \"1974-06-18T02:43:01.214Z\",\n          \"updated_at\": \"1954-01-18T18:42:31.020Z\"\n        }\n      ],\n      \"created_at\": \"2000-06-03T14:11:54.041Z\",\n      \"updated_at\": \"2001-12-19T11:34:42.022Z\"\n    }\n  ]\n}"
+            }
+          ]
+        },
+        {
+          "name": "Registrar venta",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"cliente_id\": 1,\n  \"fecha_venta\": \"2026-06-10\",\n  \"detalles\": [\n    {\n      \"camiseta_id\": 1,\n      \"cantidad\": 2\n    },\n    {\n      \"camiseta_id\": 1,\n      \"cantidad\": 2\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/ventas",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "ventas"
+              ]
+            },
+            "description": "Registra una venta junto con sus detalles. El sistema valida stock disponible y descuenta automáticamente las unidades vendidas."
+          },
+          "response": [
+            {
+              "name": "Venta registrada correctamente",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"cliente_id\": 1,\n  \"fecha_venta\": \"2026-06-10\",\n  \"detalles\": [\n    {\n      \"camiseta_id\": 1,\n      \"cantidad\": 2\n    },\n    {\n      \"camiseta_id\": 1,\n      \"cantidad\": 2\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/ventas",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "ventas"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"success\": true,\n  \"data\": {\n    \"cliente_id\": 1,\n    \"fecha_venta\": \"2026-06-10\",\n    \"id\": 1,\n    \"cliente\": {\n      \"nombre_comercial\": \"90minutos\",\n      \"rut_comercial\": \"76123456-7\",\n      \"direccion\": \"Providencia, Santiago\",\n      \"categoria\": \"Preferencial\",\n      \"contacto_nombre\": \"Juan Pérez\",\n      \"contacto_email\": \"juan@90minutos.cl\",\n      \"porcentaje_oferta\": 10,\n      \"id\": 1,\n      \"created_at\": \"2012-01-23T14:47:13.391Z\",\n      \"updated_at\": \"1974-03-04T22:19:43.422Z\"\n    },\n    \"detalles\": [\n      {\n        \"venta_id\": 1,\n        \"camiseta_id\": 1,\n        \"cantidad\": 2,\n        \"precio_unitario\": 40500,\n        \"subtotal\": 81000,\n        \"id\": 1,\n        \"camiseta\": {\n          \"titulo\": \"Camiseta Local 2025 - Selección Chilena\",\n          \"club\": \"Selección Chilena\",\n          \"pais\": \"Chile\",\n          \"tipo\": \"Local\",\n          \"color\": \"Rojo\",\n          \"precio\": 45000,\n          \"stock\": 20,\n          \"codigo_producto\": \"SCL2025L\",\n          \"id\": 1,\n          \"precio_final\": 40500,\n          \"detalles\": \"Edición aniversario 2025\",\n          \"tallas\": [\n            {\n              \"nombre\": \"M\",\n              \"id\": 1,\n              \"created_at\": \"1968-07-26T13:47:39.527Z\",\n              \"updated_at\": \"1972-02-14T14:10:04.230Z\"\n            },\n            {\n              \"nombre\": \"M\",\n              \"id\": 1,\n              \"created_at\": \"2007-11-13T15:10:01.079Z\",\n              \"updated_at\": \"1955-07-05T02:44:44.693Z\"\n            }\n          ],\n          \"created_at\": \"2024-08-06T18:49:57.324Z\",\n          \"updated_at\": \"1978-08-22T19:45:05.778Z\"\n        },\n        \"created_at\": \"1963-09-30T11:27:00.951Z\",\n        \"updated_at\": \"1958-12-31T04:54:48.015Z\"\n      },\n      {\n        \"venta_id\": 1,\n        \"camiseta_id\": 1,\n        \"cantidad\": 2,\n        \"precio_unitario\": 40500,\n        \"subtotal\": 81000,\n        \"id\": 1,\n        \"camiseta\": {\n          \"titulo\": \"Camiseta Local 2025 - Selección Chilena\",\n          \"club\": \"Selección Chilena\",\n          \"pais\": \"Chile\",\n          \"tipo\": \"Local\",\n          \"color\": \"Rojo\",\n          \"precio\": 45000,\n          \"stock\": 20,\n          \"codigo_producto\": \"SCL2025L\",\n          \"id\": 1,\n          \"precio_final\": 40500,\n          \"detalles\": \"Edición aniversario 2025\",\n          \"tallas\": [\n            {\n              \"nombre\": \"M\",\n              \"id\": 1,\n              \"created_at\": \"1964-10-19T12:03:29.088Z\",\n              \"updated_at\": \"1985-11-11T12:21:48.447Z\"\n            },\n            {\n              \"nombre\": \"M\",\n              \"id\": 1,\n              \"created_at\": \"1992-09-04T22:53:57.050Z\",\n              \"updated_at\": \"2023-06-21T11:50:29.677Z\"\n            }\n          ],\n          \"created_at\": \"1991-11-09T01:21:06.141Z\",\n          \"updated_at\": \"2009-02-18T10:28:32.674Z\"\n        },\n        \"created_at\": \"2007-07-15T11:48:11.667Z\",\n        \"updated_at\": \"2002-03-25T21:58:41.510Z\"\n      }\n    ],\n    \"created_at\": \"2009-05-13T14:52:10.429Z\",\n    \"updated_at\": \"1999-07-20T23:26:52.868Z\"\n  }\n}"
+            },
+            {
+              "name": "Datos inválidos o stock insuficiente",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"cliente_id\": 1,\n  \"fecha_venta\": \"2026-06-10\",\n  \"detalles\": [\n    {\n      \"camiseta_id\": 1,\n      \"cantidad\": 2\n    },\n    {\n      \"camiseta_id\": 1,\n      \"cantidad\": 2\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/ventas",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "ventas"
+                  ]
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "body": ""
+            },
+            {
+              "name": "Error interno al registrar la venta",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"cliente_id\": 1,\n  \"fecha_venta\": \"2026-06-10\",\n  \"detalles\": [\n    {\n      \"camiseta_id\": 1,\n      \"cantidad\": 2\n    },\n    {\n      \"camiseta_id\": 1,\n      \"cantidad\": 2\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/ventas",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "ventas"
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "body": ""
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8080/api"
+    }
+  ]
+}
