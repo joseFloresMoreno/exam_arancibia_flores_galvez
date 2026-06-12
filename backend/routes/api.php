@@ -32,6 +32,7 @@ Route::get(
 |--------------------------------------------------------------------------
 */
 Route::apiResource('camisetas', CamisetaController::class);
+Route::get('camisetas/{camiseta}/precio/{cliente}', [CamisetaController::class, 'precio']);
 
 /*
 |--------------------------------------------------------------------------

@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('color');
 
             $table->unsignedInteger('precio');
+            $table->unsignedInteger('precio_oferta')->nullable();
 
             $table->unsignedInteger('stock')->default(0);
 

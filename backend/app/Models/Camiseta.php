@@ -16,9 +16,16 @@ class Camiseta extends Model
         'tipo',
         'color',
         'precio',
+        'precio_oferta',
         'stock',
         'detalles',
-        'codigo_producto'
+        'codigo_producto',
+    ];
+
+    protected $casts = [
+        'precio'        => 'integer',
+        'precio_oferta' => 'integer',
+        'stock'         => 'integer',
     ];
 
     /**

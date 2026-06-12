@@ -215,6 +215,7 @@ erDiagram
         string tipo
         string color
         int precio
+        int precio_oferta
         int stock
         string codigo_producto
     }
@@ -281,9 +282,10 @@ erDiagram
 |---|---|---|
 | `GET` | `/api/camisetas` | Listar todas las camisetas |
 | `POST` | `/api/camisetas` | Crear camiseta |
-| `GET` | `/api/camisetas/{id}` | Ver camiseta |
+| `GET` | `/api/camisetas/{id}` | Ver camiseta con tallas |
 | `PUT` | `/api/camisetas/{id}` | Actualizar camiseta |
 | `DELETE` | `/api/camisetas/{id}` | Eliminar camiseta |
+| `GET` | `/api/camisetas/{id}/precio/{clienteId}` | Precio final para un cliente |
 
 ### Tallas
 

@@ -147,12 +147,13 @@ class VentaController extends Controller
                     );
                 }
 
-                $precioFinal = $camiseta->precio;
-
-                if ($cliente->porcentaje_oferta > 0) {
-
+                if ($camiseta->precio_oferta !== null) {
+                    $precioFinal = $camiseta->precio_oferta;
+                } elseif ($cliente->porcentaje_oferta > 0) {
                     $precioFinal = $camiseta->precio -
                         ($camiseta->precio * $cliente->porcentaje_oferta / 100);
+                } else {
+                    $precioFinal = $camiseta->precio;
                 }
 
                 $subtotal = $precioFinal * $detalle['cantidad'];

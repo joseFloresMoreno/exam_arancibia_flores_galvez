@@ -16,7 +16,11 @@ class Cliente extends Model
         'categoria',
         'contacto_nombre',
         'contacto_email',
-        'porcentaje_oferta'
+        'porcentaje_oferta',
+    ];
+
+    protected $casts = [
+        'porcentaje_oferta' => 'float',
     ];
 
     public function ventas()

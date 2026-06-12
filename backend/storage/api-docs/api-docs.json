@@ -94,22 +94,13 @@
                     "Camisetas"
                 ],
                 "summary": "Obtener camiseta",
-                "description": "Obtiene una camiseta específica y calcula el precio final según el descuento del cliente.",
+                "description": "Obtiene los datos de una camiseta específica junto con sus tallas disponibles.",
                 "operationId": "obtenerCamiseta",
                 "parameters": [
                     {
                         "name": "camiseta",
                         "in": "path",
                         "required": true,
-                        "schema": {
-                            "type": "integer"
-                        }
-                    },
-                    {
-                        "name": "cliente_id",
-                        "in": "query",
-                        "description": "ID del cliente para aplicar descuento",
-                        "required": false,
                         "schema": {
                             "type": "integer"
                         }
@@ -134,6 +125,9 @@
                                 }
                             }
                         }
+                    },
+                    "404": {
+                        "description": "Camiseta no encontrada"
                     }
                 }
             },
@@ -196,6 +190,62 @@
                     },
                     "409": {
                         "description": "La camiseta posee ventas asociadas"
+                    }
+                }
+            }
+        },
+        "/camisetas/{camiseta}/precio/{cliente}": {
+            "get": {
+                "tags": [
+                    "Camisetas"
+                ],
+                "summary": "Consultar precio para un cliente",
+                "description": "Calcula el precio final de una camiseta para un cliente específico. Si la camiseta tiene precio_oferta definido, ese es el precio final. Si no, se aplica el porcentaje_oferta del cliente sobre el precio base.",
+                "operationId": "precioParaCliente",
+                "parameters": [
+                    {
+                        "name": "camiseta",
+                        "in": "path",
+                        "description": "ID de la camiseta",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "example": 1
+                        }
+                    },
+                    {
+                        "name": "cliente",
+                        "in": "path",
+                        "description": "ID del cliente",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "example": 1
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Precio calculado correctamente",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": true
+                                        },
+                                        "data": {
+                                            "$ref": "#/components/schemas/PrecioResponse"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Camiseta o cliente no encontrado"
                     }
                 }
             }
@@ -923,10 +973,10 @@
                         "type": "integer",
                         "example": 45000
                     },
-                    "precio_final": {
-                        "description": "Precio calculado según el descuento aplicado al cliente consultante",
+                    "precio_oferta": {
+                        "description": "Precio de oferta propio de la camiseta. Si está definido, tiene precedencia sobre el descuento del cliente.",
                         "type": "integer",
-                        "example": 40500,
+                        "example": 38000,
                         "nullable": true
                     },
                     "stock": {
@@ -998,6 +1048,12 @@
                         "type": "integer",
                         "example": 45000
                     },
+                    "precio_oferta": {
+                        "description": "Precio de oferta propio de la camiseta. Opcional. Si se define, tiene precedencia sobre el porcentaje_oferta del cliente al consultar precio.",
+                        "type": "integer",
+                        "example": 38000,
+                        "nullable": true
+                    },
                     "stock": {
                         "type": "integer",
                         "example": 20
@@ -1022,6 +1078,42 @@
                             3
                         ],
                         "nullable": true
+                    }
+                },
+                "type": "object"
+            },
+            "PrecioResponse": {
+                "title": "Precio Response",
+                "description": "Resultado del cálculo de precio final de una camiseta para un cliente específico",
+                "properties": {
+                    "cliente": {
+                        "type": "string",
+                        "example": "Distribuidora El Gol SpA"
+                    },
+                    "camiseta": {
+                        "type": "string",
+                        "example": "Camiseta Local 2025 - Selección Chilena"
+                    },
+                    "precio_base": {
+                        "type": "integer",
+                        "example": 45000
+                    },
+                    "precio_oferta": {
+                        "description": "Precio de oferta propio de la camiseta. Si está definido, es el precio final.",
+                        "type": "integer",
+                        "example": 38000,
+                        "nullable": true
+                    },
+                    "porcentaje_oferta": {
+                        "description": "Descuento porcentual del cliente. Se aplica solo si la camiseta no tiene precio_oferta.",
+                        "type": "number",
+                        "format": "float",
+                        "example": 10
+                    },
+                    "precio_final": {
+                        "description": "Precio final a cobrar. Resulta de precio_oferta si existe, o de aplicar porcentaje_oferta al precio_base.",
+                        "type": "integer",
+                        "example": 38000
                     }
                 },
                 "type": "object"
